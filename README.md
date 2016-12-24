@@ -107,7 +107,8 @@ I was not able to perform any of the integration or unit tests because of lack o
 * I was able to perform CRUD operations for managing the expenses.
 
 ## Tasks Incomplete
-* I was not able to implement the different reports.
+* Admin role not implemented
+* Different report generation not implemented.
 * No Integration or Unit testing performed.
 * Interface not tested across web browsers.
 
