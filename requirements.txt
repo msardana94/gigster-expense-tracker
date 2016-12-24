@@ -1,0 +1,4 @@
+Django==1.9.9
+django-braces==1.9.0
+mysqlclient
+mysql-python-1.2.5

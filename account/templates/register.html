@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Register {% endblock %}
+
+{% block header %}
+    <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>
+                Register
+            </h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-4 col-lg-offset-4 col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            {{ form.non_field_errors }}
+
+            <form data-toggle="validator" role="form" id="registerForm" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+
+                {% include "form_snippet.html" with form=form %}
+
+                <div class="row">
+                    <div class="form-group button-style">
+                        <button type="submit" class="btn btn-primary round icon-button">Register</button>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group button-style">
+                        <span>Existing User?</span> <a class="btn btn-primary round icon-button" href="{% url 'login' %}">Login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

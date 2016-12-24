@@ -1,0 +1,49 @@
+html, body{
+    height:100%;
+    margin:0;
+    padding:0
+}
+
+/*.link-peerval-login {
+    padding-top: 12px;
+    padding-bottom: 1px;
+}
+
+.link-login {
+    color: #1c2957;
+    font-weight: bold;
+}*/
+
+.container-fluid-center {
+  /*height:100%;*/
+  display:table;
+  width: 100%;
+  padding: 0;
+}
+
+.row-fluid-center {
+    height: 100%;
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.centering {
+  float:none;
+  margin:0 auto;
+}
+
+
+/*div#id_remember_me {
+    float: right;
+}
+
+div#id_remember_me > label {
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+#logoLogin {
+    width: 50%;
+    margin-bottom: 25px;
+}*/

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+<div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Login</h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid-center">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 centering bg-white">
+            {{ form.non_field_errors }}
+            <form data-toggle="validator" role="form" id="loginForm" action="{% url 'login' %}" method="post" >
+                {% csrf_token %}
+
+                {% include "form_snippet.html" with form=form with_require=False %}
+
+                <div class="row">
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary width-100-percent">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 centering bg-white mt-10 link-peerval-login text-center">
+            <p>Don't have an account? <a href="{% url 'register' %}" class="link-login">Create an account</a></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $('.row-fluid-center').parent('.container-fluid').removeClass('container-fluid').addClass('container-fluid-center');
+    </script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load base_tags %}
+
+{% widthratio 12 columns 1 as num_clomuns %}
+{% widthratio offset 1 -1 as num_offset %}
+{% widthratio form.fields|length columns 1 as divisible %}
+{% with num_columns=num_clomuns|default:12 num_offset=num_offset|default:0 %}
+    <div class="row">
+        <div class="inner col-xs-12 col-sm-12 col-md-offset-{{ offset }} col-lg-offset-{{ offset }} col-md-{{ num_columns|add:num_offset }} col-lg-{{ num_columns|add:num_offset }}">
+            {% for field in form %}               
+                {% if field|fieldtype == 'DateInput' or field|fieldtype == 'DateTimeInput' %}
+                    <div class="form-group">
+                        <label for="{{ field.auto_id }}">{{ field.label }} {% if field.field.required and field.label != '' and with_require != False %}<em>*</em>{% endif %}</label>
+                        <div class="input-group">
+                            {{ field }}
+                            <span class="input-group-addon btn open-datetimepicker"><span class="fa fa-calendar color-blue"></span></span>
+                        </div>
+                        <div class="help-block with-errors">{% if field.errors %}{{ field.errors }}{% endif %}</div>
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                {% elif field|fieldtype == 'HiddenInput' %}
+                    <div class="form-group" id="{{ field.auto_id }}-form-group">
+                        {{ field }}
+                    </div>
+                {% else %}
+                    <div class="form-group" id="{{ field.auto_id }}-form-group">
+                        <label for="{{ field.auto_id }}">{{ field.label }} {% if field.field.required and field.label != '' and with_require != False %}<em>*</em>{% endif %}</label>
+                        {{ field }}
+                        <div class="help-block with-errors">{% if field.errors %}{{ field.errors }}{% endif %}</div>
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if forloop.counter|divisibleby:divisible and not forloop.last %}
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-offset-{{ offset }} col-lg-offset-{{ offset }} col-md-{{ num_columns|add:num_offset }} col-lg-{{ num_columns|add:num_offset }}">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endwith %}

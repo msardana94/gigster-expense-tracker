@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Expense {% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block header %}
+<div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h2>Expense Details</h2>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 centering">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills pd-10" role="tablist">
+            <li role="presentation"><a href="{% url 'create' %}">Create</a></li>
+            <li role="presentation"><a href="{% url 'read' %}">Read</a></li>
+            <li role="presentation"><a href="{% url 'update' %}">Update</a></li>
+            <li role="presentation"><a href="{% url 'delete' %}">Delete</a></li>
+            <li role="presentation"><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            {% block tab_content %} {% endblock %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}{% endblock %}

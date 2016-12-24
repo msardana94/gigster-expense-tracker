@@ -1,0 +1,24 @@
+{% extends "expense.html" %}
+{% block tab_content %}
+    <div role="tabpanel" class="tab-pane active" id="create_exp">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 no-padding">
+                {{ form.non_field_errors }}
+
+                <form role="form" id="ExpenseCreateForm" class="icons-form" action="{% url urlval %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bg-white-list">
+                            {% include "form_snippet.html" with form=form %}
+                        </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group button-style">
+                            <button type="submit" class="btn btn-primary round icon-button">{{type}} Expense</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
